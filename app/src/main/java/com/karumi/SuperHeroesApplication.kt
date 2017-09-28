@@ -6,7 +6,6 @@ import com.github.salomonbrys.kodein.Kodein.Module
 import com.github.salomonbrys.kodein.KodeinAware
 import com.github.salomonbrys.kodein.conf.ConfigurableKodein
 
-
 class SuperHeroesApplication : Application(), KodeinAware {
     override val kodein = ConfigurableKodein(mutable = true)
     var overrideModule: Module? = null
