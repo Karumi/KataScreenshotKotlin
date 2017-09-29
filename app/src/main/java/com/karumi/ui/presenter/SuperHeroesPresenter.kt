@@ -1,10 +1,15 @@
 package com.karumi.ui.presenter
 
-import com.karumi.ui.LifecycleReceiver
+import com.karumi.ui.LifecycleSubscriber
+import java.lang.ref.WeakReference
 
-class SuperHeroesPresenter(val view: View) : LifecycleReceiver {
+class SuperHeroesPresenter(view: View) : LifecycleSubscriber {
+    private val viewWeak: WeakReference<View> = WeakReference(view)
+
+    private fun view() = viewWeak.get()
+
     override fun initialize() {
-        view.hideLoading()
+        view()?.hideLoading()
     }
 
     override fun update() {
