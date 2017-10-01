@@ -37,6 +37,8 @@ dependencies {
     implementation 'com.github.salomonbrys.kodein:kodein-android:4.1.0'
     implementation 'com.github.salomonbrys.kodein:kodein-conf:4.1.0'
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'co.metalab.asyncawait:asyncawait:1.0.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
     testImplementation 'junit:junit:4.12'
 
