@@ -34,9 +34,9 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
     }
 
     private fun initializeRecyclerView() {
-        recycler_view.setLayoutManager(LinearLayoutManager(this))
+        recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.setHasFixedSize(true)
-        recycler_view.setAdapter(adapter)
+        recycler_view.adapter = adapter
     }
 
     override fun hideLoading() {
@@ -53,7 +53,6 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
             SuperHeroesPresenter(this@MainActivity,
                 instance())
         }
-
         bind<GetSuperHeroes>() with provider { GetSuperHeroes() }
     }
 }
