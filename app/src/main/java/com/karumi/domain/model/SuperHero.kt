@@ -1,4 +1,4 @@
-package com.karumi.ui.domain.model
+package com.karumi.domain.model
 
 data class SuperHero(val name: String,
     val photo: String?,

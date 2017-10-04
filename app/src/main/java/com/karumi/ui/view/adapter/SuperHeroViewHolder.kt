@@ -5,7 +5,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.karumi.R
-import com.karumi.ui.domain.model.SuperHero
+import com.karumi.domain.model.SuperHero
 import com.karumi.ui.presenter.SuperHeroesPresenter
 import com.karumi.ui.utils.setImageBackground
 

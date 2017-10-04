@@ -3,8 +3,8 @@ package com.karumi.ui.presenter
 import android.util.Log
 import co.metalab.asyncawait.async
 import com.karumi.ui.LifecycleSubscriber
-import com.karumi.ui.domain.model.SuperHero
-import com.karumi.ui.domain.usecase.GetSuperHeroes
+import com.karumi.domain.model.SuperHero
+import com.karumi.domain.usecase.GetSuperHeroes
 import org.funktionale.either.Either.Left
 import org.funktionale.either.Either.Right
 import java.lang.ref.WeakReference

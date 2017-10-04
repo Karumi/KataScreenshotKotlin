@@ -9,8 +9,8 @@ import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.karumi.R
 import com.karumi.ui.LifecycleSubscriber
-import com.karumi.ui.domain.model.SuperHero
-import com.karumi.ui.domain.usecase.GetSuperHeroes
+import com.karumi.domain.model.SuperHero
+import com.karumi.domain.usecase.GetSuperHeroes
 import com.karumi.ui.presenter.SuperHeroesPresenter
 import com.karumi.ui.view.adapter.SuperHeroesAdapter
 import kotlinx.android.synthetic.main.main_activity.progress_bar

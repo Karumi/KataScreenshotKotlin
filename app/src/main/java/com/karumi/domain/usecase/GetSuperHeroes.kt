@@ -1,9 +1,10 @@
-package com.karumi.ui.domain.usecase
+package com.karumi.domain.usecase
 
-import com.karumi.ui.domain.model.SuperHero
+import com.karumi.data.repository.SuperHeroRepository
+import com.karumi.domain.model.SuperHero
 import org.funktionale.either.Either
 
-class GetSuperHeroes {
+class GetSuperHeroes(superHeroesRepository: SuperHeroRepository) {
 
     private val mockSuperHero = SuperHero(name = "Super Peter",
         description = "He is a superHero, write code faster than flash",

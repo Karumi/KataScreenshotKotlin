@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.karumi.R
-import com.karumi.ui.domain.model.SuperHero
+import com.karumi.domain.model.SuperHero
 import com.karumi.ui.presenter.SuperHeroesPresenter
 
 internal class SuperHeroesAdapter(
