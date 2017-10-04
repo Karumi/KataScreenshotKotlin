@@ -31,18 +31,11 @@ class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : Lifecyc
         async {
             val result = await { getSuperHeroes() }
             view()?.hideLoading()
-            when (result) {
-                is Right -> showSuperHeroes(result.r)
-                is Left -> Log.d(TAG, "an error happens.")
+            when  {
+                result is Right && result.r.isEmpty() -> view()?.showEmptyCase()
+                result is Right && result.r.isNotEmpty() -> view()?.showSuperHeroes(result.r)
+                result is Left -> Log.d(TAG, "an error happens.")
             }
-        }
-    }
-
-    private fun showSuperHeroes(superHeroes: List<SuperHero>) {
-        if (superHeroes.isEmpty()) {
-            view()?.showEmptyCase()
-        } else {
-            view()?.showSuperHeroes(superHeroes)
         }
     }
 
