@@ -28,7 +28,7 @@ abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
         app.overrideModule = testDependencies
     }
 
-    fun record(activity: Activity) {
+    fun compareScreenshot(activity: Activity) {
         Screenshot.snapActivity(activity).record()
     }
 
