@@ -2,9 +2,9 @@ package com.karumi.ui.presenter
 
 import android.util.Log
 import co.metalab.asyncawait.async
-import com.karumi.ui.LifecycleSubscriber
 import com.karumi.domain.model.SuperHero
 import com.karumi.domain.usecase.GetSuperHeroes
+import com.karumi.ui.LifecycleSubscriber
 import org.funktionale.either.Either.Left
 import org.funktionale.either.Either.Right
 import java.lang.ref.WeakReference
@@ -23,6 +23,7 @@ class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : Lifecyc
     }
 
     override fun update() {
+        view()?.showLoading()
         refreshSuperHeroes()
     }
 
@@ -31,15 +32,25 @@ class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : Lifecyc
             val result = await { getSuperHeroes() }
             view()?.hideLoading()
             when (result) {
-                is Right -> view()?.showSuperHeroes(result.r)
+                is Right -> showSuperHeroes(result.r)
                 is Left -> Log.d(TAG, "an error happens.")
             }
+        }
+    }
+
+    private fun showSuperHeroes(superHeroes: List<SuperHero>) {
+        if (superHeroes.isEmpty()) {
+            view()?.showEmptyCase()
+        } else {
+            view()?.showSuperHeroes(superHeroes)
         }
     }
 
     interface View {
         fun hideLoading()
         fun showSuperHeroes(superHeroes: List<SuperHero>)
+        fun showLoading()
+        fun showEmptyCase()
     }
 
     fun onSuperHeroClicked(superHero: SuperHero) {

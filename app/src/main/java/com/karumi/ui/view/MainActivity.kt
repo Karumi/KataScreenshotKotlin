@@ -8,13 +8,14 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.github.salomonbrys.kodein.provider
 import com.karumi.R
-import com.karumi.ui.LifecycleSubscriber
 import com.karumi.domain.model.SuperHero
 import com.karumi.domain.usecase.GetSuperHeroes
+import com.karumi.ui.LifecycleSubscriber
 import com.karumi.ui.presenter.SuperHeroesPresenter
 import com.karumi.ui.view.adapter.SuperHeroesAdapter
 import kotlinx.android.synthetic.main.main_activity.progress_bar
 import kotlinx.android.synthetic.main.main_activity.recycler_view
+import kotlinx.android.synthetic.main.main_activity.tv_empty_case
 
 class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
     private val presenter: SuperHeroesPresenter by injector.instance()
@@ -39,11 +40,20 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
         recycler_view.adapter = adapter
     }
 
+    override fun showLoading() {
+        progress_bar.visibility = View.VISIBLE
+    }
+
     override fun hideLoading() {
         progress_bar.visibility = View.GONE
     }
 
+    override fun showEmptyCase() {
+        tv_empty_case.visibility = View.VISIBLE
+    }
+
     override fun showSuperHeroes(superHeroes: List<SuperHero>) {
+        adapter.clear()
         adapter.addAll(superHeroes)
         adapter.notifyDataSetChanged()
     }
@@ -53,7 +63,7 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
             SuperHeroesPresenter(this@MainActivity,
                 instance())
         }
-        bind<GetSuperHeroes>() with provider { GetSuperHeroes() }
+        bind<GetSuperHeroes>() with provider { GetSuperHeroes(instance()) }
     }
 }
 

@@ -29,4 +29,8 @@ internal class SuperHeroesAdapter(
     override fun getItemCount(): Int {
         return superHeroes.size
     }
+
+    fun clear() {
+        superHeroes.clear()
+    }
 }
