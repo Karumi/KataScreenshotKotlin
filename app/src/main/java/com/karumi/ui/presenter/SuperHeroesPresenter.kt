@@ -39,13 +39,14 @@ class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : Lifecyc
         }
     }
 
+    fun onSuperHeroClicked(superHero: SuperHero) = view()?.openDetail(superHero.name)
+
     interface View {
         fun hideLoading()
         fun showSuperHeroes(superHeroes: List<SuperHero>)
         fun showLoading()
         fun showEmptyCase()
-    }
+        fun openDetail(name: String)
 
-    fun onSuperHeroClicked(superHero: SuperHero) {
     }
 }

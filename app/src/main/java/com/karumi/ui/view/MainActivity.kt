@@ -1,5 +1,6 @@
 package com.karumi.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.main_activity.recycler_view
 import kotlinx.android.synthetic.main.main_activity.tv_empty_case
 
 class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
+
     private val presenter: SuperHeroesPresenter by injector.instance()
     private lateinit var adapter: SuperHeroesAdapter
 
@@ -28,6 +30,10 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
         super.onCreate(savedInstanceState)
         initializeAdapter()
         initializeRecyclerView()
+    }
+
+    override fun preparePresenter(intent: Intent?) {
+
     }
 
     private fun initializeAdapter() {
@@ -56,6 +62,10 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
         adapter.clear()
         adapter.addAll(superHeroes)
         adapter.notifyDataSetChanged()
+    }
+
+    override fun openDetail(name: String) {
+        SuperHeroDetailActivity.open(activity = this, superHeroName = name)
     }
 
     override val activityModules = Module(allowSilentOverride = true) {

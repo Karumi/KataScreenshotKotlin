@@ -3,6 +3,7 @@ package com.karumi.ui
 val lifeCycleLinker = LifecycleLinker()
 
 class LifecycleLinker : LifecyclePublisher {
+
     private val receivers = ArrayList<LifecycleSubscriber>()
 
     override fun registerToLifecycle(subscriber: LifecycleSubscriber) {

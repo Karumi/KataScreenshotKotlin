@@ -1,5 +1,6 @@
 package com.karumi.ui.view
 
+import android.content.Intent
 import android.os.Bundle
 import com.github.salomonbrys.kodein.Kodein.Module
 import com.github.salomonbrys.kodein.android.KodeinAppCompatActivity
@@ -15,14 +16,16 @@ abstract class BaseActivity : KodeinAppCompatActivity(), LifecyclePublisher by l
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
         registerToLifecycle(obtainPresenter())
+        preparePresenter(intent)
         initialize()
     }
 
+    abstract fun preparePresenter(intent: Intent?)
     abstract fun getLayoutId(): Int
 
     abstract fun obtainPresenter(): LifecycleSubscriber
 
-    abstract val activityModules : Module
+    abstract val activityModules: Module
 
     override fun onResume() {
         super.onResume()

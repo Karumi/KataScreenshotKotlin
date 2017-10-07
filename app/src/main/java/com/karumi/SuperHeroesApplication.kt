@@ -27,7 +27,7 @@ class SuperHeroesApplication : Application(), KodeinAware {
     }
 
     fun addModule(activityModules: Module) {
-        kodein.addImport(activityModules)
+        kodein.addImport(activityModules, true)
         if (overrideModule != null) {
             kodein.addImport(overrideModule!!, true)
         }

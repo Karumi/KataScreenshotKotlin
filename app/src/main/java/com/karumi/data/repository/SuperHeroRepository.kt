@@ -20,6 +20,11 @@ class SuperHeroRepository {
         return superHeroes
     }
 
+    fun getSuperHeroByName(name: String): SuperHero {
+        waitABit()
+        return superHeroes.first { it.name == name }
+    }
+
     private fun waitABit() {
         try {
             Thread.sleep(BIT_TIME)
@@ -131,4 +136,5 @@ class SuperHeroRepository {
 
         )
     }
+
 }
