@@ -7,5 +7,5 @@ import org.funktionale.either.Either
 class GetSuperHeroByName(val superHeroesRepository: SuperHeroRepository) {
 
     operator fun invoke(name: String): Either<Error, SuperHero> =
-        Either.right(superHeroesRepository.getSuperHeroByName(name))
+        Either.right(superHeroesRepository.getByName(name))
 }
