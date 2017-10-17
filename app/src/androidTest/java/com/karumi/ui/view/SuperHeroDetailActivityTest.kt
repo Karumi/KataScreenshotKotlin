@@ -6,12 +6,12 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.karumi.data.repository.SuperHeroRepository
 import com.karumi.domain.model.SuperHero
+import com.karumi.mockito.MockitoExtensions.on
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 
 class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
-    SuperHeroDetailActivity::class.java) {
+        SuperHeroDetailActivity::class.java) {
 
     @Mock private lateinit var repository: SuperHeroRepository
 
@@ -41,7 +41,7 @@ class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
         val superHeroName = "SuperHero"
         val superHeroDescription = "Super Hero Description"
         val superHero = SuperHero(superHeroName, null, isAvenger, superHeroDescription)
-        `when`(repository.getByName(superHeroName)).thenReturn(superHero)
+        on(repository.getByName(superHeroName)).thenReturn(superHero)
         return superHero
     }
 
