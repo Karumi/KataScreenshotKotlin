@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "com.karumi"
         minSdkVersion 16
-        targetSdkVersion 26
+        targetSdkVersion 23
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "com.karumi.InjectedTestRunner"
@@ -37,6 +37,9 @@ dependencies {
     implementation 'com.github.salomonbrys.kodein:kodein-android:4.1.0'
     implementation 'com.github.salomonbrys.kodein:kodein-conf:4.1.0'
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation 'co.metalab.asyncawait:asyncawait:1.0.0'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'org.funktionale:funktionale-either:1.1'
 
     testImplementation 'junit:junit:4.12'
 
