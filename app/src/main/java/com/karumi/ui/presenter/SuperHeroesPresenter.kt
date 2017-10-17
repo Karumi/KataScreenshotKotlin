@@ -9,13 +9,15 @@ import org.funktionale.either.Either.Left
 import org.funktionale.either.Either.Right
 import java.lang.ref.WeakReference
 
-class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : LifecycleSubscriber {
+class SuperHeroesPresenter(
+        view: View,
+        private val getSuperHeroes: GetSuperHeroes) : LifecycleSubscriber {
+
     companion object {
         private val TAG: String = "SuperHeroesPresenter"
     }
 
     private val viewWeak: WeakReference<View> = WeakReference(view)
-    private val getSuperHeroes: GetSuperHeroes = getSuperHeroes
 
     private fun view() = viewWeak.get()
 
@@ -33,7 +35,6 @@ class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : Lifecyc
             result is Left -> Log.d(TAG, "There was an error")
         }
     }
-
 
     fun onSuperHeroClicked(superHero: SuperHero) = view()?.openDetail(superHero.name)
 

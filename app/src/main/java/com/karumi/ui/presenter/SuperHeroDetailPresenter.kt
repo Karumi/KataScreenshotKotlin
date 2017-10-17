@@ -9,13 +9,15 @@ import org.funktionale.either.Either.Left
 import org.funktionale.either.Either.Right
 import java.lang.ref.WeakReference
 
-class SuperHeroDetailPresenter(view: View, getSuperHeroByName: GetSuperHeroByName) :
+class SuperHeroDetailPresenter(
+        view: View,
+        private val getSuperHeroByName: GetSuperHeroByName) :
         LifecycleSubscriber {
+
     companion object {
         private val TAG = "SuperHeroDetail"
     }
 
-    private val getSuperHeroByName: GetSuperHeroByName = getSuperHeroByName
     private val viewWeak: WeakReference<View> = WeakReference(view)
     private fun view() = viewWeak.get()
 
