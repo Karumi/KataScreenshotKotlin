@@ -33,5 +33,4 @@ before_script:
   - adb shel input keyevent 82 &
 
 script:
-  - cd iob-hypervisor
   - ./gradlew ktlint build executeScreenshotTests -Pcom.android.threadPoolSize=1 -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xms1024m -Xmx1024m" -Dorg.gradle.daemon=false
