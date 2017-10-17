@@ -28,7 +28,7 @@ class SuperHeroDetailActivity : BaseActivity(), SuperHeroDetailPresenter.View {
 
     override val presenter: SuperHeroDetailPresenter by injector.instance()
 
-    override fun getLayoutId(): Int = R.layout.super_hero_detail_activity
+    override val layoutId: Int = R.layout.super_hero_detail_activity
     override fun preparePresenter(intent: Intent?) =
         presenter.preparePresenter(intent?.extras?.getString(SUPER_HERO_NAME_KEY))
 

@@ -11,21 +11,20 @@ import com.karumi.ui.lifeCycleLinker
 
 abstract class BaseActivity : KodeinAppCompatActivity(), LifecyclePublisher by lifeCycleLinker {
 
+    abstract val layoutId: Int
+    abstract val presenter: LifecycleSubscriber
+    abstract val activityModules: Module
+
     override fun onCreate(savedInstanceState: Bundle?) {
         applicationContext.asApp().addModule(activityModules)
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        setContentView(layoutId)
         register(presenter)
         preparePresenter(intent)
         initialize()
     }
 
-    abstract fun preparePresenter(intent: Intent?)
-    abstract fun getLayoutId(): Int
-
-    abstract val presenter: LifecycleSubscriber
-
-    abstract val activityModules: Module
+    open fun preparePresenter(intent: Intent?) {}
 
     override fun onResume() {
         super.onResume()

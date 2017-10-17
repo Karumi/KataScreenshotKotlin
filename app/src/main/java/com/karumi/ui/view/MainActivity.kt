@@ -1,6 +1,5 @@
 package com.karumi.ui.view
 
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
@@ -19,17 +18,12 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
 
     override val presenter: SuperHeroesPresenter by injector.instance()
     private lateinit var adapter: SuperHeroesAdapter
-
-    override fun getLayoutId(): Int = R.layout.main_activity
+    override val layoutId: Int = R.layout.main_activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initializeAdapter()
         initializeRecyclerView()
-    }
-
-    override fun preparePresenter(intent: Intent?) {
-
     }
 
     private fun initializeAdapter() {
