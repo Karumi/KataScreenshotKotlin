@@ -15,7 +15,7 @@ abstract class BaseActivity : KodeinAppCompatActivity(), LifecyclePublisher by l
         applicationContext.asApp().addModule(activityModules)
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId())
-        registerToLifecycle(obtainPresenter())
+        register(presenter)
         preparePresenter(intent)
         initialize()
     }
@@ -23,7 +23,7 @@ abstract class BaseActivity : KodeinAppCompatActivity(), LifecyclePublisher by l
     abstract fun preparePresenter(intent: Intent?)
     abstract fun getLayoutId(): Int
 
-    abstract fun obtainPresenter(): LifecycleSubscriber
+    abstract val presenter: LifecycleSubscriber
 
     abstract val activityModules: Module
 
@@ -32,4 +32,8 @@ abstract class BaseActivity : KodeinAppCompatActivity(), LifecyclePublisher by l
         update()
     }
 
+    override fun onDestroy() {
+        unregister(presenter)
+        super.onDestroy()
+    }
 }

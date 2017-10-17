@@ -10,14 +10,9 @@ import com.github.salomonbrys.kodein.provider
 import com.karumi.R
 import com.karumi.domain.model.SuperHero
 import com.karumi.domain.usecase.GetSuperHeroByName
-import com.karumi.ui.LifecycleSubscriber
 import com.karumi.ui.presenter.SuperHeroDetailPresenter
 import com.karumi.ui.utils.setImageBackground
-import kotlinx.android.synthetic.main.super_hero_detail_activity.iv_avengers_badge
-import kotlinx.android.synthetic.main.super_hero_detail_activity.iv_super_hero_photo
-import kotlinx.android.synthetic.main.super_hero_detail_activity.progress_bar
-import kotlinx.android.synthetic.main.super_hero_detail_activity.tv_super_hero_description
-import kotlinx.android.synthetic.main.super_hero_detail_activity.tv_super_hero_name
+import kotlinx.android.synthetic.main.super_hero_detail_activity.*
 
 class SuperHeroDetailActivity : BaseActivity(), SuperHeroDetailPresenter.View {
 
@@ -31,10 +26,9 @@ class SuperHeroDetailActivity : BaseActivity(), SuperHeroDetailPresenter.View {
         }
     }
 
-    private val presenter: SuperHeroDetailPresenter by injector.instance()
+    override val presenter: SuperHeroDetailPresenter by injector.instance()
 
     override fun getLayoutId(): Int = R.layout.super_hero_detail_activity
-    override fun obtainPresenter(): LifecycleSubscriber = presenter
     override fun preparePresenter(intent: Intent?) =
         presenter.preparePresenter(intent?.extras?.getString(SUPER_HERO_NAME_KEY))
 

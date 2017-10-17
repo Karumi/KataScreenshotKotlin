@@ -11,20 +11,16 @@ import com.github.salomonbrys.kodein.provider
 import com.karumi.R
 import com.karumi.domain.model.SuperHero
 import com.karumi.domain.usecase.GetSuperHeroes
-import com.karumi.ui.LifecycleSubscriber
 import com.karumi.ui.presenter.SuperHeroesPresenter
 import com.karumi.ui.view.adapter.SuperHeroesAdapter
-import kotlinx.android.synthetic.main.main_activity.progress_bar
-import kotlinx.android.synthetic.main.main_activity.recycler_view
-import kotlinx.android.synthetic.main.main_activity.tv_empty_case
+import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
 
-    private val presenter: SuperHeroesPresenter by injector.instance()
+    override val presenter: SuperHeroesPresenter by injector.instance()
     private lateinit var adapter: SuperHeroesAdapter
 
     override fun getLayoutId(): Int = R.layout.main_activity
-    override fun obtainPresenter(): LifecycleSubscriber = presenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,7 +67,7 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
     override val activityModules = Module(allowSilentOverride = true) {
         bind<SuperHeroesPresenter>() with provider {
             SuperHeroesPresenter(this@MainActivity,
-                instance())
+                    instance())
         }
         bind<GetSuperHeroes>() with provider { GetSuperHeroes(instance()) }
     }
