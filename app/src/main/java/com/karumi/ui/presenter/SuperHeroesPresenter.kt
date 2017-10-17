@@ -19,25 +19,21 @@ class SuperHeroesPresenter(view: View, getSuperHeroes: GetSuperHeroes) : Lifecyc
 
     private fun view() = viewWeak.get()
 
-    override fun initialize() {
-    }
-
     override fun update() {
         view()?.showLoading()
         refreshSuperHeroes()
     }
 
-    private fun refreshSuperHeroes() {
-        async {
-            val result = await { getSuperHeroes() }
-            view()?.hideLoading()
-            when {
-                result is Right && result.r.isEmpty() -> view()?.showEmptyCase()
-                result is Right && result.r.isNotEmpty() -> view()?.showSuperHeroes(result.r)
-                result is Left -> Log.d(TAG, "an error happens.")
-            }
+    private fun refreshSuperHeroes() = async {
+        val result = await { getSuperHeroes() }
+        view()?.hideLoading()
+        when {
+            result is Right && result.r.isEmpty() -> view()?.showEmptyCase()
+            result is Right && result.r.isNotEmpty() -> view()?.showSuperHeroes(result.r)
+            result is Left -> Log.d(TAG, "There was an error")
         }
     }
+
 
     fun onSuperHeroClicked(superHero: SuperHero) = view()?.openDetail(superHero.name)
 

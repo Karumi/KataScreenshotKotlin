@@ -10,7 +10,7 @@ import org.funktionale.either.Either.Right
 import java.lang.ref.WeakReference
 
 class SuperHeroDetailPresenter(view: View, getSuperHeroByName: GetSuperHeroByName) :
-    LifecycleSubscriber {
+        LifecycleSubscriber {
     companion object {
         private val TAG = "SuperHeroDetail"
     }
@@ -29,22 +29,17 @@ class SuperHeroDetailPresenter(view: View, getSuperHeroByName: GetSuperHeroByNam
         }
     }
 
-    override fun initialize() {
-    }
-
     override fun update() {
         view()?.showLoading()
         refreshSuperHeroes()
     }
 
-    private fun refreshSuperHeroes() {
-        async {
-            val result = await { getSuperHeroByName(name) }
-            view()?.hideLoading()
-            when {
-                result is Right -> view()?.showSuperHero(result.r)
-                result is Left -> Log.d(SuperHeroDetailPresenter.TAG, "an error happens.")
-            }
+    private fun refreshSuperHeroes() = async {
+        val result = await { getSuperHeroByName(name) }
+        view()?.hideLoading()
+        when {
+            result is Right -> view()?.showSuperHero(result.r)
+            result is Left -> Log.d(SuperHeroDetailPresenter.TAG, "There was an error")
         }
     }
 

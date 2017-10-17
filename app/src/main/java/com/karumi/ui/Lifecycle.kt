@@ -31,6 +31,6 @@ interface LifecyclePublisher {
 }
 
 interface LifecycleSubscriber {
-    fun initialize()
-    fun update()
+    fun initialize() {}
+    fun update() {}
 }
