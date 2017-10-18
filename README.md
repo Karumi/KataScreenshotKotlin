@@ -84,6 +84,7 @@ If you've covered all the application functionality using UI tests try to contin
 
 There are some links which can be useful to finish these tasks:
 
+* [Screenshot Kata in Java][kataScreenshotJava]
 * [Screenshot Testing Framework][screenshotFramework]
 * [Android Testing Support Library official documentation][androidTestingDocumentation]
 * [Espresso Cheat Sheet][espressoCheatSheet]
@@ -120,4 +121,4 @@ limitations under the License.
 [espressoIdlingResources]: http://dev.jimdo.com/2014/05/09/wait-for-it-a-deep-dive-into-espresso-s-idling-resources/
 [espressoCustomMatchers]: http://blog.xebia.com/android-custom-matchers-in-espresso/
 [kataSuperHeroesAndroid]: https://github.com/karumi/KataSuperHeroesAndroid
-
+[kataScreenshotJava]: https://github.com/Karumi/KataScreenshotAndroid
