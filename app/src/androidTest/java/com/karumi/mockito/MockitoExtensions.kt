@@ -5,7 +5,5 @@ import org.mockito.stubbing.OngoingStubbing
 
 object MockitoExtensions {
     @JvmStatic
-    fun <T> on(methodCall: T): OngoingStubbing<T> {
-        return Mockito.`when`(methodCall)
-    }
+    fun <T> on(methodCall: T): OngoingStubbing<T> = Mockito.`when`(methodCall)
 }

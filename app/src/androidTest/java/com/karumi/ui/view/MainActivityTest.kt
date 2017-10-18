@@ -11,10 +11,6 @@ import org.mockito.Mock
 
 class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) {
 
-    companion object {
-        private val ANY_NUMBER_OF_SUPER_HEROES = 100
-    }
-
     @Mock private lateinit var repository: SuperHeroRepository
 
     @Test
@@ -25,45 +21,6 @@ class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) 
 
         compareScreenshot(activity)
     }
-
-    @Test
-    fun showsJustOneSuperHero() {
-        givenThereAreSomeSuperHeroes(1)
-
-        val activity = startActivity()
-
-        compareScreenshot(activity)
-    }
-
-    @Test
-    fun showsSuperHeroesIfThereAreSomeSuperHeroes() {
-        givenThereAreSomeSuperHeroes(ANY_NUMBER_OF_SUPER_HEROES)
-
-        val activity = startActivity()
-
-        compareScreenshot(activity)
-    }
-
-    @Test
-    fun showsAvengersBadgeIfASuperHeroIsPartOfTheAvengersTeam() {
-        givenThereAreSomeAvengers(ANY_NUMBER_OF_SUPER_HEROES)
-
-        val activity = startActivity()
-
-        compareScreenshot(activity)
-    }
-
-    @Test
-    fun doesNotShowAvengersBadgeIfASuperHeroIsNotPartOfTheAvengersTeam() {
-        givenThereAreSomeSuperHeroes(ANY_NUMBER_OF_SUPER_HEROES)
-
-        val activity = startActivity()
-
-        compareScreenshot(activity)
-    }
-
-    private fun givenThereAreSomeAvengers(numberOfAvengers: Int): List<SuperHero> =
-            givenThereAreSomeSuperHeroes(numberOfAvengers, avengers = true)
 
     private fun givenThereAreSomeSuperHeroes(
             numberOfSuperHeroes: Int = 1,
@@ -83,8 +40,7 @@ class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) 
         on(repository.getAllSuperHeroes()).thenReturn(emptyList())
     }
 
-    override val testDependencies =
-            Module(allowSilentOverride = true) {
-                bind<SuperHeroRepository>() with instance(repository)
-            }
+    override val testDependencies = Module(allowSilentOverride = true) {
+        bind<SuperHeroRepository>() with instance(repository)
+    }
 }
