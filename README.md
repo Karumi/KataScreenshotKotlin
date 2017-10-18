@@ -60,7 +60,7 @@ Our recommendation for this exercise is:
     4. Execute `MainActivityTest` and watch the only test it contains pass.
 
   * To help you get started, these are some test cases for `MainActivity`:     
-    1. Setup mocked `SuperHeroesRepository` in `MainActivityTest` to return a list of some Super Heroes.
+    1. Setup mocked `SuperHeroRepository` in `MainActivityTest` to return a list of some Super Heroes.
     2. Test the ``MainActivity`` is showing the super heroes obtained from the ``SuperHeroesRepository``.
     3. Test the empty case is shown if there are no super heroes.
 
