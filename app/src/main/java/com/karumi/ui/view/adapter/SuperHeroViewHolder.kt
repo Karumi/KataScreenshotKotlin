@@ -9,8 +9,10 @@ import com.karumi.domain.model.SuperHero
 import com.karumi.ui.presenter.SuperHeroesPresenter
 import com.karumi.ui.utils.setImageBackground
 
-class SuperHeroViewHolder(itemView: View,
-    private val presenter: SuperHeroesPresenter) : RecyclerView.ViewHolder(itemView) {
+class SuperHeroViewHolder(
+        itemView: View,
+        private val presenter: SuperHeroesPresenter) : RecyclerView.ViewHolder(itemView) {
+
     private val photoImageView: ImageView = itemView.findViewById(R.id.iv_super_hero_photo)
     private val nameTextView: TextView = itemView.findViewById(R.id.tv_super_hero_name)
     private val avengersBadgeView: View = itemView.findViewById(R.id.iv_avengers_badge)

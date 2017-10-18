@@ -10,7 +10,6 @@ jdk:
 android:
   components:
     - tools
-    - tools
     - platform-tools
     - build-tools-25.0.2
     - build-tools-26.0.2
@@ -30,7 +29,7 @@ before_script:
   - adb shell settings put global window_animation_scale 0 &
   - adb shell settings put global transition_animation_scale 0 &
   - adb shell settings put global animator_duration_scale 0 &
-  - adb shel input keyevent 82 &
+  - adb shell input keyevent 82 &
 
 script:
   - ./gradlew ktlint build executeScreenshotTests -Pcom.android.threadPoolSize=1 -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xms1024m -Xmx1024m" -Dorg.gradle.daemon=false

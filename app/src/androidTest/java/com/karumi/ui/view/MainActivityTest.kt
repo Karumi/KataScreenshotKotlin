@@ -83,8 +83,7 @@ class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) 
         on(repository.getAllSuperHeroes()).thenReturn(emptyList())
     }
 
-    override val testDependencies =
-            Module(allowSilentOverride = true) {
-                bind<SuperHeroRepository>() with instance(repository)
-            }
+    override val testDependencies = Module(allowSilentOverride = true) {
+        bind<SuperHeroRepository>() with instance(repository)
+    }
 }
