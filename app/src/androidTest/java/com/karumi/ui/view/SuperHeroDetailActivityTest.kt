@@ -17,7 +17,7 @@ class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
 
     @Test
     fun showsAvengersBadgeIfSuperHeroIsPartOfTheAvengersTeam() {
-        val superHero = givenAnAvenger()
+        val superHero = givenThereIsASuperHero(isAvenger = true)
 
         val activity = startActivity(superHero)
 
@@ -26,15 +26,11 @@ class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
 
     @Test
     fun doesNotShowAvengersBadgeIfSuperHeroIsNotPartOfTheAvengersTeam() {
-        val superHero = givenThereIsASuperHero(false)
+        val superHero = givenThereIsASuperHero(isAvenger = false)
 
         val activity = startActivity(superHero)
 
         compareScreenshot(activity)
-    }
-
-    private fun givenAnAvenger(): SuperHero {
-        return givenThereIsASuperHero(true)
     }
 
     private fun givenThereIsASuperHero(isAvenger: Boolean): SuperHero {
@@ -51,8 +47,7 @@ class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
         return startActivity(args)
     }
 
-    override val testDependencies =
-        Module(allowSilentOverride = true) {
-            bind<SuperHeroRepository>() with instance(repository)
-        }
+    override val testDependencies = Module(allowSilentOverride = true) {
+        bind<SuperHeroRepository>() with instance(repository)
+    }
 }
