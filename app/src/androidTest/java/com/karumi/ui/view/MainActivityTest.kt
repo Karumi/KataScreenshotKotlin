@@ -5,9 +5,9 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.karumi.data.repository.SuperHeroRepository
 import com.karumi.domain.model.SuperHero
+import com.karumi.mockito.MockitoExtensions.on
 import org.junit.Test
 import org.mockito.Mock
-import org.mockito.Mockito.`when`
 
 class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) {
 
@@ -62,28 +62,29 @@ class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) 
         compareScreenshot(activity)
     }
 
-    private fun givenThereAreSomeAvengers(numberOfAvengers: Int): List<SuperHero>
-        = givenThereAreSomeSuperHeroes(numberOfAvengers, avengers = true)
+    private fun givenThereAreSomeAvengers(numberOfAvengers: Int): List<SuperHero> =
+            givenThereAreSomeSuperHeroes(numberOfAvengers, avengers = true)
 
-    private fun givenThereAreSomeSuperHeroes(numberOfSuperHeroes: Int = 1,
-        avengers: Boolean = false): List<SuperHero> {
+    private fun givenThereAreSomeSuperHeroes(
+            numberOfSuperHeroes: Int = 1,
+            avengers: Boolean = false): List<SuperHero> {
         val superHeroes = IntRange(0, numberOfSuperHeroes - 1).map { id ->
             val superHeroName = "SuperHero - " + id
             val superHeroDescription = "Description Super Hero - " + id
             SuperHero(superHeroName, null, avengers,
-                superHeroDescription)
+                    superHeroDescription)
         }
 
-        `when`(repository.getAllSuperHeroes()).thenReturn(superHeroes)
+        on(repository.getAllSuperHeroes()).thenReturn(superHeroes)
         return superHeroes
     }
 
     private fun givenThereAreNoSuperHeroes() {
-        `when`(repository.getAllSuperHeroes()).thenReturn(emptyList())
+        on(repository.getAllSuperHeroes()).thenReturn(emptyList())
     }
 
     override val testDependencies =
-        Module(allowSilentOverride = true) {
-            bind<SuperHeroRepository>() with instance(repository)
-        }
+            Module(allowSilentOverride = true) {
+                bind<SuperHeroRepository>() with instance(repository)
+            }
 }

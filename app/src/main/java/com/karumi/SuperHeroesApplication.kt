@@ -18,16 +18,8 @@ class SuperHeroesApplication : Application(), KodeinAware {
         resetInjection()
     }
 
-    fun appDependencies(app: SuperHeroesApplication): Module {
-        return Module(allowSilentOverride = true) {
-            bind<SuperHeroRepository>() with singleton {
-                SuperHeroRepository()
-            }
-        }
-    }
-
     fun addModule(activityModules: Module) {
-        kodein.addImport(activityModules)
+        kodein.addImport(activityModules, true)
         if (overrideModule != null) {
             kodein.addImport(overrideModule!!, true)
         }
@@ -35,7 +27,15 @@ class SuperHeroesApplication : Application(), KodeinAware {
 
     fun resetInjection() {
         kodein.clear()
-        kodein.addImport(appDependencies(this), true)
+        kodein.addImport(appDependencies(), true)
+    }
+
+    private fun appDependencies(): Module {
+        return Module(allowSilentOverride = true) {
+            bind<SuperHeroRepository>() with singleton {
+                SuperHeroRepository()
+            }
+        }
     }
 }
 

@@ -1,6 +1,8 @@
 package com.karumi.ui.view
 
 import android.app.Activity
+import android.content.Intent
+import android.os.Bundle
 import android.support.test.InstrumentationRegistry
 import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
@@ -32,8 +34,10 @@ abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
         Screenshot.snapActivity(activity).record()
     }
 
-    fun startActivity(): Activity {
-        return testRule.launchActivity(null)
+    fun startActivity(args: Bundle = Bundle()): T {
+        val intent = Intent()
+        intent.putExtras(args)
+        return testRule.launchActivity(intent)
     }
 
     abstract val testDependencies: Kodein.Module
