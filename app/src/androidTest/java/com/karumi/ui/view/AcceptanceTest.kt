@@ -7,7 +7,6 @@ import android.support.test.InstrumentationRegistry
 import android.support.test.filters.LargeTest
 import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
-import com.facebook.testing.screenshot.Screenshot
 import com.github.salomonbrys.kodein.Kodein
 import com.karumi.asApp
 import org.junit.Before
@@ -17,7 +16,8 @@ import org.mockito.MockitoAnnotations
 
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
+abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) : ScreenshotTest {
+
     @Rule
     @JvmField
     val testRule: ActivityTestRule<T> = ActivityTestRule(clazz, true, false)
@@ -28,10 +28,6 @@ abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) {
         val app = InstrumentationRegistry.getInstrumentation().targetContext.asApp()
         app.resetInjection()
         app.overrideModule = testDependencies
-    }
-
-    fun compareScreenshot(activity: Activity) {
-        Screenshot.snapActivity(activity).record()
     }
 
     fun startActivity(args: Bundle = Bundle()): T {
