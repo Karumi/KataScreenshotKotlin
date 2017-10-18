@@ -2,6 +2,7 @@ package com.karumi.ui.view
 
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.Toolbar
 import android.view.View
 import com.github.salomonbrys.kodein.Kodein.Module
 import com.github.salomonbrys.kodein.bind
@@ -19,6 +20,8 @@ class MainActivity : BaseActivity(), SuperHeroesPresenter.View {
     override val presenter: SuperHeroesPresenter by injector.instance()
     private lateinit var adapter: SuperHeroesAdapter
     override val layoutId: Int = R.layout.main_activity
+    override val toolbarView: Toolbar
+        get() = toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
