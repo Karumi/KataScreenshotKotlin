@@ -1,4 +1,4 @@
-![Karumi logo][karumilogo] KataScreenshot in Kotlin. [![Build Status](https://travis-ci.org/Karumi/KataScreenshotKotlin.svg?branch=master)](https://travis-ci.org/Karumi/KataScreenshotKotlin)
+![Karumi logo][karumilogo] KataScreenshot in Kotlin [![Build Status](https://travis-ci.org/Karumi/KataScreenshotKotlin.svg?branch=master)](https://travis-ci.org/Karumi/KataScreenshotKotlin)
 ============================
 
 - We are here to practice UI testing using [screenshot tests for Android][screenshotFramework].
