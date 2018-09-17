@@ -1,4 +1,4 @@
-![Karumi logo][karumilogo] KataScreenshot in Kotlin. [![Build Status](https://travis-ci.org/Karumi/KataScreenshotKotlin.svg?branch=master)](https://travis-ci.org/Karumi/KataScreenshotKotlin)
+![Karumi logo][karumilogo] KataScreenshot in Kotlin [![Build Status](https://travis-ci.org/Karumi/KataScreenshotKotlin.svg?branch=master)](https://travis-ci.org/Karumi/KataScreenshotKotlin)
 ============================
 
 - We are here to practice UI testing using [screenshot tests for Android][screenshotFramework].
@@ -60,7 +60,7 @@ Our recommendation for this exercise is:
     4. Execute `MainActivityTest` and watch the only test it contains pass.
 
   * To help you get started, these are some test cases for `MainActivity`:     
-    1. Setup mocked `SuperHeroesRepository` in `MainActivityTest` to return a list of some Super Heroes.
+    1. Setup mocked `SuperHeroRepository` in `MainActivityTest` to return a list of some Super Heroes.
     2. Test the ``MainActivity`` is showing the super heroes obtained from the ``SuperHeroesRepository``.
     3. Test the empty case is shown if there are no super heroes.
 
@@ -84,6 +84,7 @@ If you've covered all the application functionality using UI tests try to contin
 
 There are some links which can be useful to finish these tasks:
 
+* [Screenshot Kata in Java][kataScreenshotJava]
 * [Screenshot Testing Framework][screenshotFramework]
 * [Android Testing Support Library official documentation][androidTestingDocumentation]
 * [Espresso Cheat Sheet][espressoCheatSheet]
@@ -120,4 +121,4 @@ limitations under the License.
 [espressoIdlingResources]: http://dev.jimdo.com/2014/05/09/wait-for-it-a-deep-dive-into-espresso-s-idling-resources/
 [espressoCustomMatchers]: http://blog.xebia.com/android-custom-matchers-in-espresso/
 [kataSuperHeroesAndroid]: https://github.com/karumi/KataSuperHeroesAndroid
-
+[kataScreenshotJava]: https://github.com/Karumi/KataScreenshotAndroid
