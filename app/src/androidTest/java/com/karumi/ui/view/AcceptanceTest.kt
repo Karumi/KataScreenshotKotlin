@@ -4,8 +4,8 @@ import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.support.test.InstrumentationRegistry
+import android.support.test.espresso.intent.rule.IntentsTestRule
 import android.support.test.filters.LargeTest
-import android.support.test.rule.ActivityTestRule
 import android.support.test.runner.AndroidJUnit4
 import com.github.salomonbrys.kodein.Kodein
 import com.karumi.asApp
@@ -20,7 +20,7 @@ abstract class AcceptanceTest<T : Activity>(clazz: Class<T>) : ScreenshotTest {
 
     @Rule
     @JvmField
-    val testRule: ActivityTestRule<T> = ActivityTestRule(clazz, true, false)
+    val testRule: IntentsTestRule<T> = IntentsTestRule(clazz, true, false)
 
     @Before
     fun setup() {
