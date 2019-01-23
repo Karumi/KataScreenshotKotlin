@@ -25,9 +25,9 @@ interface ScreenshotTest {
         val metrics = DisplayMetrics()
         windowManager.defaultDisplay.getMetrics(metrics)
         ViewHelpers.setupView(view)
-                .setExactHeightPx(context.resources.getDimensionPixelSize(height))
-                .setExactWidthPx(metrics.widthPixels)
-                .layout()
+            .setExactHeightPx(context.resources.getDimensionPixelSize(height))
+            .setExactWidthPx(metrics.widthPixels)
+            .layout()
         Screenshot.snap(view).record()
     }
 }

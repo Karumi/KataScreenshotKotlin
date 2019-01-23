@@ -55,33 +55,41 @@ class SuperHeroViewHolderTest : ScreenshotTest {
         val context = getInstrumentation().targetContext
         val inflater = LayoutInflater.from(context)
         val view = inflater.inflate(R.layout.super_hero_row, null, false)
-        return SuperHeroViewHolder(view, mock<SuperHeroesPresenter>(SuperHeroesPresenter::class.java))
+        return SuperHeroViewHolder(
+            view,
+            mock<SuperHeroesPresenter>(SuperHeroesPresenter::class.java)
+        )
     }
 
     private fun givenASuperHeroWithALongDescription(): SuperHero {
         val superHeroName = "Super Hero Name"
-        val superHeroDescription = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor" +
-                " incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in " +
-                "voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
-                "proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        val superHeroDescription = """
+            |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            |incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            |ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            |voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            |proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            |""".trimMargin()
         val isAvenger = false
         return givenASuperHero(superHeroName, superHeroDescription, isAvenger)
     }
 
     private fun givenASuperHeroWithALongName(): SuperHero {
-        val superHeroName = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor " +
-                "incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation " +
-                "ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in " +
-                "voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non " +
-                "proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        val superHeroName = """
+            |Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            |incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            |ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+            |voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            |proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            |""".trimMargin()
         val superHeroDescription = "Description Super Hero"
         val isAvenger = false
         return givenASuperHero(superHeroName, superHeroDescription, isAvenger)
     }
 
     private fun givenASuperHero(
-            superHeroName: String = "Super Hero Name",
-            superHeroDescription: String = "Super Hero Description",
-            isAvenger: Boolean = false): SuperHero = SuperHero(superHeroName, null, isAvenger, superHeroDescription)
+        superHeroName: String = "Super Hero Name",
+        superHeroDescription: String = "Super Hero Description",
+        isAvenger: Boolean = false
+    ): SuperHero = SuperHero(superHeroName, null, isAvenger, superHeroDescription)
 }
