@@ -5,13 +5,14 @@ import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance
 import com.karumi.data.repository.SuperHeroRepository
 import com.karumi.domain.model.SuperHero
-import com.karumi.mockito.MockitoExtensions.on
+import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Test
 import org.mockito.Mock
 
 class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) {
 
-    @Mock private lateinit var repository: SuperHeroRepository
+    @Mock
+    private lateinit var repository: SuperHeroRepository
 
     @Test
     fun showsEmptyCaseIfThereAreNoSuperHeroes() {
@@ -23,21 +24,24 @@ class MainActivityTest : AcceptanceTest<MainActivity>(MainActivity::class.java) 
     }
 
     private fun givenThereAreSomeSuperHeroes(
-            numberOfSuperHeroes: Int = 1,
-            avengers: Boolean = false): List<SuperHero> {
+        numberOfSuperHeroes: Int = 1,
+        avengers: Boolean = false
+    ): List<SuperHero> {
         val superHeroes = IntRange(0, numberOfSuperHeroes - 1).map { id ->
-            val superHeroName = "SuperHero - " + id
-            val superHeroDescription = "Description Super Hero - " + id
-            SuperHero(superHeroName, null, avengers,
-                    superHeroDescription)
+            val superHeroName = "SuperHero - $id"
+            val superHeroDescription = "Description Super Hero - $id"
+            SuperHero(
+                superHeroName, null, avengers,
+                superHeroDescription
+            )
         }
 
-        on(repository.getAllSuperHeroes()).thenReturn(superHeroes)
+        whenever(repository.getAllSuperHeroes()).thenReturn(superHeroes)
         return superHeroes
     }
 
     private fun givenThereAreNoSuperHeroes() {
-        on(repository.getAllSuperHeroes()).thenReturn(emptyList())
+        whenever(repository.getAllSuperHeroes()).thenReturn(emptyList())
     }
 
     override val testDependencies = Module(allowSilentOverride = true) {

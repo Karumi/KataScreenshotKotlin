@@ -8,3 +8,5 @@
 sdcard
 sdcard.lock
 app/build
+sdcard.img
+sdcard.img.qcow2
