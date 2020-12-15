@@ -17,23 +17,6 @@ class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
     @Mock
     private lateinit var repository: SuperHeroRepository
 
-    @Test
-    fun showsAvengersBadgeIfSuperHeroIsPartOfTheAvengersTeam() {
-        val superHero = givenThereIsASuperHero(isAvenger = true)
-
-        val activity = startActivity(superHero)
-
-        compareScreenshot(activity)
-    }
-
-    @Test
-    fun doesNotShowAvengersBadgeIfSuperHeroIsNotPartOfTheAvengersTeam() {
-        val superHero = givenThereIsASuperHero(isAvenger = false)
-
-        val activity = startActivity(superHero)
-
-        compareScreenshot(activity)
-    }
 
     private fun givenThereIsASuperHero(isAvenger: Boolean): SuperHero {
         val superHeroName = "SuperHero"
