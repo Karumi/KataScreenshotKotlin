@@ -17,6 +17,9 @@ class SuperHeroDetailActivityTest : AcceptanceTest<SuperHeroDetailActivity>(
     @Mock
     private lateinit var repository: SuperHeroRepository
 
+    @Test
+    fun noTests() {
+    }
 
     private fun givenThereIsASuperHero(isAvenger: Boolean): SuperHero {
         val superHeroName = "SuperHero"
